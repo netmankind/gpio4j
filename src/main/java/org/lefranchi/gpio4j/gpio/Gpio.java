@@ -11,8 +11,22 @@ import java.io.IOException;
  */
 public abstract class Gpio {
 	
+	/**
+	 * Setup pin direction.
+	 * 
+	 * @param pin
+	 * @throws IOException
+	 */
 	abstract public void setupPinDirection(Pin pin) throws IOException;
 
+	/**
+	 * Set Pin State.
+	 * 
+	 * @param pin
+	 * @throws IOException
+	 */
+	abstract public void setPinState(Pin pin) throws IOException;
+	
 	/**
 	 * Instantiate and configure new Pin ready to use.
 	 * 

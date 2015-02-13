@@ -30,6 +30,11 @@ public class UdooGpio extends Gpio {
 	private final String PATH_DIRECTION = "direction";
 	
 	/**
+	 * Path to GPIO value.
+	 */
+	private final String PATH_VALUE = "value";
+	
+	/**
 	 * Relationship between pin number and gpio card number.
 	 */
 	private Map<Integer, Integer> pinToGpioNumber;
@@ -51,6 +56,19 @@ public class UdooGpio extends Gpio {
 		Path path = Paths.get(String.format(PATH, this.pinToGpioNumber.get(pin.getNumber())), PATH_DIRECTION);
 		
 		Files.write( path, pin.getDirection().name().toLowerCase().getBytes(), StandardOpenOption.APPEND);
+		
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see org.lefranchi.gpio4j.gpio.Gpio#setPinState(org.lefranchi.gpio4j.gpio.Pin)
+	 */
+	@Override
+	public void setPinState(Pin pin) throws IOException {
+		
+		Path path = Paths.get(String.format(PATH, this.pinToGpioNumber.get(pin.getNumber())), PATH_VALUE);
+		
+		Files.write( path, String.valueOf(pin.getState().getValue()).getBytes(), StandardOpenOption.APPEND);
 		
 	}
 	
@@ -116,7 +134,5 @@ public class UdooGpio extends Gpio {
 		pinToGpioNumber.put(52, 55);
 		pinToGpioNumber.put(53, 88);
 	}
-
-
 
 }

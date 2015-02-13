@@ -25,6 +25,12 @@ public class UdooTest {
 			
 			assertNotNull(led01);
 			
+			led01.setState(PinState.LOW);
+			
+			gpio.setPinState(led01);
+			
+			assertEquals(led01.getState(), PinState.LOW);
+			
 		} catch (Exception e) {
 			
 			// To build outside Udoo.
