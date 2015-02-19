@@ -21,7 +21,7 @@ public class UdooTest {
 		
 		try {
 			
-			Pin led01 = gpio.provisionPin(1, GpioDirection.OUT, PinState.HIGH, "PIN_1_OUT_LED1");
+			Pin led01 = gpio.provisionPin(5, GpioDirection.OUT, PinState.HIGH, "PIN_1_OUT_LED1");
 			
 			assertNotNull(led01);
 			
@@ -32,7 +32,10 @@ public class UdooTest {
 			assertEquals(led01.getState(), PinState.LOW);
 			
 		} catch (Exception e) {
-			
+
+
+			e.printStackTrace();
+	
 			// To build outside Udoo.
 			if (!(e instanceof java.nio.file.NoSuchFileException)) {
 				e.printStackTrace();
