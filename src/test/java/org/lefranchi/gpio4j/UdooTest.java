@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.lefranchi.gpio4j.gpio.Gpio;
+import org.lefranchi.gpio4j.gpio.GpioBoard;
 import org.lefranchi.gpio4j.gpio.GpioFactory;
 import org.lefranchi.gpio4j.gpio.Pin;
 import org.lefranchi.gpio4j.gpio.Gpio.GpioDirection;
-import org.lefranchi.gpio4j.gpio.GpioFactory.GpioBoard;
 import org.lefranchi.gpio4j.gpio.PinState;
 
 public class UdooTest {

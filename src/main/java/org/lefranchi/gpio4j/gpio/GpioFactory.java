@@ -1,5 +1,6 @@
 package org.lefranchi.gpio4j.gpio;
 
+import org.lefranchi.gpio4j.gpio.udoo.SimulatedGpio;
 import org.lefranchi.gpio4j.gpio.udoo.UdooGpio;
 
 /**
@@ -9,28 +10,18 @@ import org.lefranchi.gpio4j.gpio.udoo.UdooGpio;
  *
  */
 public class GpioFactory {
-	
-	public static final Gpio factory(GpioBoard board) {
-		
-		if (board == null)
-			return null;
-		else if (board.equals(GpioBoard.UDOO))
-			return new UdooGpio();
-		else 
-			return null;
-		
-	}
 
-	/**
-	 * Board.
-	 * 
-	 * @author lefranchi
-	 *
-	 */
-	public enum GpioBoard {
-		
-		UDOO;
-		
+	public static final Gpio factory(GpioBoard board) {
+
+		switch (board) {
+		case SIMULATED:
+			return new SimulatedGpio();
+		case UDOO:
+			return new UdooGpio();
+		default:
+			return null;
+		}
+
 	}
 
 }
