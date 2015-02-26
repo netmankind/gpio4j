@@ -1,5 +1,7 @@
 package org.lefranchi.gpio4j.gpio;
 
+import java.io.IOException;
+
 import org.lefranchi.gpio4j.gpio.Gpio.GpioDirection;
 
 /**
@@ -11,21 +13,30 @@ public class Pin {
 	 * Pin number.
 	 */
 	private int number;
-	
+
 	/**
 	 * Tag for human readable.
 	 */
 	private String tag;
-	
+
 	/**
 	 * Pin State.
 	 */
 	private PinState state;
-	
+
 	/**
 	 * Pin Direction.
 	 */
 	private GpioDirection direction;
+
+	/**
+	 * Gpio.
+	 */
+	private Gpio gpio;
+
+	public Pin(Gpio gpio) {
+		this.gpio = gpio;
+	}
 
 	public int getNumber() {
 		return number;
@@ -47,8 +58,18 @@ public class Pin {
 		return state;
 	}
 
-	public void setState(PinState state) {
+	/**
+	 * Sets and execute PinState.
+	 * 
+	 * @param state
+	 *            State of Pin.
+	 * @throws IOException
+	 */
+	public void setState(PinState state) throws IOException {
 		this.state = state;
+
+		gpio.setPinState(this);
+
 	}
 
 	public GpioDirection getDirection() {
@@ -58,6 +79,13 @@ public class Pin {
 	public void setDirection(GpioDirection direction) {
 		this.direction = direction;
 	}
-	
-	
+
+	public Gpio getGpio() {
+		return gpio;
+	}
+
+	public void setGpio(Gpio gpio) {
+		this.gpio = gpio;
+	}
+
 }

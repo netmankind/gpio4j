@@ -39,7 +39,7 @@ public abstract class Gpio {
 	 */
 	public Pin provisionPin(int pinNumber, GpioDirection direction, PinState initialState, String tag) throws Exception {
 
-		Pin pin = new Pin();
+		Pin pin = new Pin(this);
 		
 		pin.setNumber(pinNumber);
 		pin.setDirection(direction);
